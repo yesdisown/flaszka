@@ -85,6 +85,7 @@ impl Chest {
         Some(top_card)
     }
 
+    /// returns the total card count of all the shelves
     pub fn card_count(&self) -> usize {
         let mut count: usize = 0;
         for shelf in &self.shelves {
