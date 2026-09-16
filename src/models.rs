@@ -64,8 +64,14 @@ impl Chest {
         Some(())
     }
 
-    pub fn get_top_card_move(&mut self, target: MoveTarget) -> Option<()> {
+    pub fn get_top_card_move(&mut self, target: MoveTarget) -> Option<PendingCardMove> {
         let top_shelf_id = self.top_shelf_id()?;
         let top_card = self.shelves.get_mut(top_shelf_id).unwrap().cards.remove(0);
+
+        Some(PendingCardMove {
+            shelf_id: top_shelf_id,
+            card: top_card,
+            target,
+        })
     }
 }
